@@ -45,7 +45,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat \
+ valgrind --leak-check=yes srec_cat \
     x1.srec \
     x2.srec -fill 0 -maximum-address x1.srec -minimum-address x2.srec \
     -o test.out

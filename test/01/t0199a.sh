@@ -24,14 +24,14 @@ TEST_SUBJECT="msbin concatenate records"
 . test_prelude.sh
 
 # Generate a long enough test data
-srec_cat -generate 1 1048577 -repeat-string 'MsBinConcatenateRecordsTest' -execution-start-address=1 -o test.in
+ valgrind --leak-check=yes srec_cat -generate 1 1048577 -repeat-string 'MsBinConcatenateRecordsTest' -execution-start-address=1 -o test.in
 if test $? -ne 0; then no_result; fi
 
 # Test a round-trip srec->MsBin->srec
-srec_cat test.in -o test.msbin -MsBin
+ valgrind --leak-check=yes srec_cat test.in -o test.msbin -MsBin
 if test $? -ne 0; then fail; fi
 
-srec_cat test.msbin -MsBin -o test.out
+ valgrind --leak-check=yes srec_cat test.msbin -MsBin -o test.out
 if test $? -ne 0; then fail; fi
 
 # test if the resulting srec file is identical to the generated input

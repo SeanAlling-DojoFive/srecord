@@ -42,10 +42,10 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.ok.srec -o test.ok -bin
+ valgrind --leak-check=yes srec_cat test.ok.srec -o test.ok -bin
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -offset 0x123 -o test.out -asc-hex
+ valgrind --leak-check=yes srec_cat test.in -offset 0x123 -o test.out -asc-hex
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -64,7 +64,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in.uue -o test.in -bin
+ valgrind --leak-check=yes srec_cat test.in.uue -o test.in -bin
 if test $? -ne 0; then no_result; fi
 
 cat > test.ok << 'fubar'
@@ -75,7 +75,7 @@ S5030002FA
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -asc-hex -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat test.in -asc-hex -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

@@ -37,7 +37,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -tek -o test.out -mot -header HDR
+ valgrind --leak-check=yes srec_cat test.in -tek -o test.out -mot -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

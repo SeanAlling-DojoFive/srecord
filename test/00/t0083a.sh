@@ -97,7 +97,7 @@ C870D96877653C6295519CE2E80E36E3FD70EB6E906E5CB549F0BFDE0DDC69D64C423EC4A87B26,
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -cosmac
+ valgrind --leak-check=yes srec_cat test.in -o test.out -cosmac
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

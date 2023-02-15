@@ -52,7 +52,7 @@ awk -f x.awk > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -ah -data-only > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -o test.out -ah -data-only > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

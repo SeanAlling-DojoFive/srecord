@@ -37,7 +37,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat \
+ valgrind --leak-check=yes srec_cat \
     \( \
     test.in --exclude 0x02001000 0x2001010 \
     -generate 0x02001000 0x02001004 -repeat-data 0xED 0xAC 0x01 0x23 \

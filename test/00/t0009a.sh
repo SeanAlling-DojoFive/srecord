@@ -39,7 +39,7 @@ S9030300F9
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat - -offset 0x300 -length-be 0x100 < test.in > test.out
+ valgrind --leak-check=yes srec_cat - -offset 0x300 -length-be 0x100 < test.in > test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -55,7 +55,7 @@ S9030300F9
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat - -offset 0x300 -length-le 0x100 < test.in > test.out
+ valgrind --leak-check=yes srec_cat - -offset 0x300 -length-le 0x100 < test.in > test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

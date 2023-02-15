@@ -52,7 +52,7 @@ const unsigned long eprom_length      = 0x00000017;
 fubar
 test $? -eq 0 || no_result
 
-srec_cat test.in -o foo/test.out -ca -incl
+ valgrind --leak-check=yes srec_cat test.in -o foo/test.out -ca -incl
 test $? -eq 0 || fail
 
 diff test.ok foo/test.out

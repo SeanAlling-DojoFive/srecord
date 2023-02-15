@@ -20,7 +20,7 @@
 TEST_SUBJECT="fletcher16 seed"
 . test_prelude.sh
 
-srec_cat - -o test.in -bin << 'fubar'
+ valgrind --leak-check=yes srec_cat - -o test.in -bin << 'fubar'
 S00600004844521B
 S111000048656C6C6F2C20576F726C64210A7B
 S5030001FB

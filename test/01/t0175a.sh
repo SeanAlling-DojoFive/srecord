@@ -64,7 +64,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fletcher-32-b-e 0x1000 -crop 0x1000 0x1004 \
+ valgrind --leak-check=yes srec_cat test.in -fletcher-32-b-e 0x1000 -crop 0x1000 0x1004 \
     -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 

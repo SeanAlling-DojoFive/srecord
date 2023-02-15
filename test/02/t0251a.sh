@@ -20,7 +20,7 @@
 TEST_SUBJECT="write Logisim"
 . test_prelude.sh
 
-srec_cat - -motorola -disable=esa -o test.bin -bin << 'fubar'
+ valgrind --leak-check=yes srec_cat - -motorola -disable=esa -o test.bin -bin << 'fubar'
 S0220000687474703A2F2F737265636F72642E736F75726365666F7267652E6E65742F1D
 S12300001FF38F46DDCCC11A0FE4E64DC0CD6DC1825F1F87CC8A6DE3B250CBC1CEC6204CD5
 S12300209598FDBBAD725DFDE909FFE0F041ED568677064CBCAC4A9FDD996A7046BAD55103
@@ -103,7 +103,7 @@ A2 10 69 5E 4B CC 8 3C CB 35 8D 64 3E 23 E1 A1 8E 8A D4 A5
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.bin -bin -o test.out -logisim
+ valgrind --leak-check=yes srec_cat test.bin -bin -o test.out -logisim
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

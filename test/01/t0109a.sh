@@ -40,7 +40,7 @@ K0008HDR90000B4865B6C6CB6F2CB20FF90091BFF57B6F72B6C64B210A7F290F
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding 2 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding 2 \
     -o test.out -ti-tagged-16
 if test $? -ne 0; then fail; fi
 
@@ -72,7 +72,7 @@ S5030003F9
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -ti-tagged-16 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -ti-tagged-16 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

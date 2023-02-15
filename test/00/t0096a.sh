@@ -34,13 +34,13 @@ S11100600D0A533530333030303146420D0A2C
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.ok.srec -o test.ok -bin > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.ok.srec -o test.ok -bin > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     no_result
 fi
 
-srec_cat test.in -o test.out -crlf > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -o test.out -crlf > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

@@ -39,7 +39,7 @@ Data:   0000 - 0043
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat in.srec -offset - -minimum-address in.srec -o out.srec
+ valgrind --leak-check=yes srec_cat in.srec -offset - -minimum-address in.srec -o out.srec
 if test $? -ne 0; then fail; fi
 
 srec_info out.srec > test.out

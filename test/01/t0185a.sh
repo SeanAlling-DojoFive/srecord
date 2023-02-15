@@ -43,7 +43,7 @@ srec_cat: libgcrypt not available
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -sha384 0x100 -o test.out > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -sha384 0x100 -o test.out > LOG 2>&1
 if test $? -ne 0; then
     # if libgcrypt not available, pass by default
     if diff ok2 LOG > /dev/null 2> /dev/null; then

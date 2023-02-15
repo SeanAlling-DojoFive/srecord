@@ -42,7 +42,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -offset 100 test.in -offset 150 \
+ valgrind --leak-check=yes srec_cat test.in -offset 100 test.in -offset 150 \
     -o test.out -asm > log 2>&1
 if test $? -ne 0; then
     cat log

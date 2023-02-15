@@ -64,7 +64,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in.srec -o test.in -bin
+ valgrind --leak-check=yes srec_cat test.in.srec -o test.in -bin
 if test $? -ne 0; then no_result; fi
 
 cat > test.ok << 'fubar'
@@ -98,7 +98,7 @@ S5030019E3
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -dsw test.in -aomf -o test.out
+ valgrind --leak-check=yes srec_cat -dsw test.in -aomf -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

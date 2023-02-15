@@ -67,7 +67,7 @@ extern const unsigned short eprom[];
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
     -o test.out -c-array -ow -include
 if test $? -ne 0; then fail; fi
 

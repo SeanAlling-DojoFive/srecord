@@ -29,7 +29,7 @@ Data:   0123 - 0455
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -generate 0x123 0x456 -random \
+ valgrind --leak-check=yes srec_cat -generate 0x123 0x456 -random \
     -o test.srec -header HDR -start-addr 0
 if test $? -ne 0; then fail; fi
 

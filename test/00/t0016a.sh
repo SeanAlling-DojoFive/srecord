@@ -37,7 +37,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -minimum-be 0x0200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -minimum-be 0x0200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff -c test.ok test.out
@@ -52,7 +52,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -minimum-le 0x0200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -minimum-le 0x0200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff -c test.ok test.out

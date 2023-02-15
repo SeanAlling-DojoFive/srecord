@@ -42,7 +42,7 @@ test.in
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat @args > LOG 2>&1
+ valgrind --leak-check=yes srec_cat @args > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

@@ -44,11 +44,11 @@ fubar
 if test $? -ne 0; then no_result; fi
 
 # reconstruct original msbin binary
-srec_cat test.ok.src -o test.ok -binary
+ valgrind --leak-check=yes srec_cat test.ok.src -o test.ok -binary
 if test $? -ne 0; then no_result; fi
 
 # encode test.in into MsBin format
-srec_cat test.in -o test.out -MsBin
+ valgrind --leak-check=yes srec_cat test.in -o test.out -MsBin
 if test $? -ne 0; then fail; fi
 
 # test if the encoded msbin file is identical

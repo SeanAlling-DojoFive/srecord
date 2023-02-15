@@ -32,7 +32,7 @@ if test $? -ne 0; then no_result; fi
 cat > test.ok << 'fubar'
 -- HDR
 --
--- Generated automatically by srec_cat -VHDL - do not edit
+-- Generated automatically by  valgrind --leak-check=yes srec_cat -VHDL - do not edit
 --
 library IEEE;
 use IEEE.numeric_std.all;
@@ -52,7 +52,7 @@ end package body eprom_pack;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0 -within test.in -range-padding 4 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0 -within test.in -range-padding 4 \
     -o test.out -vhdl 4
 if test $? -ne 0; then fail; fi
 
@@ -62,7 +62,7 @@ if test $? -ne 0; then fail; fi
 cat > test.ok << 'fubar'
 -- HDR
 --
--- Generated automatically by srec_cat -VHDL - do not edit
+-- Generated automatically by  valgrind --leak-check=yes srec_cat -VHDL - do not edit
 --
 library IEEE;
 use IEEE.numeric_std.all;
@@ -83,7 +83,7 @@ end package body eprom_pack;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding 2 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding 2 \
     -o test.out -vhdl 2
 if test $? -ne 0; then fail; fi
 

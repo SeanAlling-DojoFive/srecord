@@ -40,7 +40,7 @@ K0008HDR90000B4865B6C6CB6F2C*2090123B576FB726CB6421*0A7F3DCF
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -ti-tagged
+ valgrind --leak-check=yes srec_cat test.in -o test.out -ti-tagged
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -66,7 +66,7 @@ B4865B6C6CB6F2C*207FBBDF
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -ti-tagged -o test.out
+ valgrind --leak-check=yes srec_cat test.in -ti-tagged -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

@@ -37,7 +37,7 @@ S70500000000FA
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -addrlen=4
+ valgrind --leak-check=yes srec_cat test.in -o test.out -addrlen=4
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

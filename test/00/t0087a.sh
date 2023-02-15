@@ -37,7 +37,7 @@ X6F726C64210AFFFF3
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding=8 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding=8 \
     -o test.out -fairchild
 if test $? -ne 0; then fail; fi
 

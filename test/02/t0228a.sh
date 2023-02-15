@@ -17,7 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-TEST_SUBJECT="srec_cat -o -coe"
+TEST_SUBJECT=" valgrind --leak-check=yes srec_cat -o -coe"
 . test_prelude.sh
 
 cat > test.in << 'fubar'
@@ -31,7 +31,7 @@ if test $? -ne 0; then no_result; fi
 cat > test.ok << 'fubar'
 ; HDR
 ;
-; Generated automatically by srec_cat -o --coe 8
+; Generated automatically by  valgrind --leak-check=yes srec_cat -o --coe 8
 ;
 ; depth = 16; 0x0010
 ; width = 8; 0x08
@@ -57,7 +57,7 @@ memory_initialization_vector =
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -coe
+ valgrind --leak-check=yes srec_cat test.in -o test.out -coe
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

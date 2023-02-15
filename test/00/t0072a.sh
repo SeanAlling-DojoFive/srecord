@@ -43,7 +43,7 @@ S5030003F9
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -emon52 -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat test.in -emon52 -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -62,7 +62,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -emon52 -o test.out -emon52
+ valgrind --leak-check=yes srec_cat test.in -emon52 -o test.out -emon52
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

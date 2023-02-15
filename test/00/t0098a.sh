@@ -38,7 +38,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -intel -byteswap -o test.out -vmem 16
+ valgrind --leak-check=yes srec_cat test.in -intel -byteswap -o test.out -vmem 16
 test $? -eq 0 || fail
 
 diff test.ok test.out

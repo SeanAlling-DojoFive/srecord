@@ -467,7 +467,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in.srec -o test.in -bin
+ valgrind --leak-check=yes srec_cat test.in.srec -o test.in -bin
 if test $? -ne 0; then no_result; fi
 
 cat > test.ok << 'fubar'
@@ -863,7 +863,7 @@ S90334E0E8
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -decbin -o test.out -header HDR -multiple > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -decbin -o test.out -header HDR -multiple > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail
@@ -876,7 +876,7 @@ if test $? -ne 0; then fail; fi
 #
 # Test writing the format.
 #
-srec_cat test.in -decbin -o test.out -decbin -multi > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -decbin -o test.out -decbin -multi > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

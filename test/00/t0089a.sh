@@ -37,7 +37,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding 4 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding 4 \
     -o test.out -vmem
 if test $? -ne 0; then fail; fi
 
@@ -52,7 +52,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -vmem 16 -header hello
+ valgrind --leak-check=yes srec_cat test.in -o test.out -vmem 16 -header hello
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -70,7 +70,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -vmem 8 -line-leng 20
+ valgrind --leak-check=yes srec_cat test.in -o test.out -vmem 8 -line-leng 20
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

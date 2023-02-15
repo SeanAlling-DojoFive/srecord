@@ -34,7 +34,7 @@ S111000048656C6C6F2C20576F726C64210A7B
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -data-only
+ valgrind --leak-check=yes srec_cat test.in -o test.out -data-only
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -46,7 +46,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -intel -data-only
+ valgrind --leak-check=yes srec_cat test.in -o test.out -intel -data-only
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -57,7 +57,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -tek -data-only
+ valgrind --leak-check=yes srec_cat test.in -o test.out -tek -data-only
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

@@ -28,7 +28,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat --generate 8 12 -const-l-e 0x4030201 4 -o test.out -header HDR -esa 0
+ valgrind --leak-check=yes srec_cat --generate 8 12 -const-l-e 0x4030201 4 -o test.out -header HDR -esa 0
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

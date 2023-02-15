@@ -27,7 +27,7 @@ S5030001FB
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -generate 0xFFFFFF02 0xFFFFFF03 -constant 0xAB -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat -generate 0xFFFFFF02 0xFFFFFF03 -constant 0xAB -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -42,7 +42,7 @@ S5030001FB
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -generate 0xFFFFFFFF 0x100000000 -constant 0xAB -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat -generate 0xFFFFFFFF 0x100000000 -constant 0xAB -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

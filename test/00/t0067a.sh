@@ -71,7 +71,7 @@ S70501D0010028
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -intel \
+ valgrind --leak-check=yes srec_cat test.in -intel \
     -exclude 0x1D00000 0x1D00004 \
     -fill 0xff 0x1D00004 0x1D00400 \
     -o test.out -header HDR

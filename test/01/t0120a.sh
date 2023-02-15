@@ -39,7 +39,7 @@ S5030003F9
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-pad 4 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-pad 4 \
     -o test.out > LOG 2>&1
 if test $? -ne 0; then fail; fi
 

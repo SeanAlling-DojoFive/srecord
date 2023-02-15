@@ -36,7 +36,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -mips-flash-be -o test.out -hexdump
+ valgrind --leak-check=yes srec_cat test.in -mips-flash-be -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -70,7 +70,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -mips-flash-be -o test.out -hexdump
+ valgrind --leak-check=yes srec_cat test.in -mips-flash-be -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

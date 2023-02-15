@@ -31,7 +31,7 @@ if test $? -ne 0; then no_result; fi
 cat > test.ok << 'fubar'
 -- HDR
 --
--- Generated automatically by srec_cat -o --mif
+-- Generated automatically by  valgrind --leak-check=yes srec_cat -o --mif
 --
 DEPTH = 14;
 WIDTH = 8;
@@ -44,7 +44,7 @@ END;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -mif
+ valgrind --leak-check=yes srec_cat test.in -o test.out -mif
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

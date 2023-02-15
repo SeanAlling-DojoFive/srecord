@@ -31,7 +31,7 @@ S10D000048656C6C6F2C20576F727A
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -bin -crop 0 10 -o test.out --disable=data-count --disable=head
+ valgrind --leak-check=yes srec_cat test.in -bin -crop 0 10 -o test.out --disable=data-count --disable=head
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

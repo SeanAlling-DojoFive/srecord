@@ -44,7 +44,7 @@ REM length = 68
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -basic
+ valgrind --leak-check=yes srec_cat test.in -o test.out -basic
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

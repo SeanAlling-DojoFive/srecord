@@ -37,7 +37,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -offset 0x10000 -o test.out -intel -al=3
+ valgrind --leak-check=yes srec_cat test.in -offset 0x10000 -o test.out -intel -al=3
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

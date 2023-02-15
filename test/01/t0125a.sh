@@ -30,7 +30,7 @@ S5030003F9
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -generate 0x12345 0x1239A -repeat-data 0xDE 0xAD 0xBE 0xEF \
+ valgrind --leak-check=yes srec_cat -generate 0x12345 0x1239A -repeat-data 0xDE 0xAD 0xBE 0xEF \
     -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 

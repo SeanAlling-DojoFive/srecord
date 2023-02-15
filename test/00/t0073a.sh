@@ -18,7 +18,7 @@
 #       <http://www.gnu.org/licenses/>.
 #
 
-TEST_SUBJECT="srec_cat -header"
+TEST_SUBJECT=" valgrind --leak-check=yes srec_cat -header"
 . test_prelude.sh
 
 cat > test.in << 'fubar'
@@ -33,7 +33,7 @@ S5030001FB
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -bin -o test.out -header "This is a test" > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -bin -o test.out -header "This is a test" > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

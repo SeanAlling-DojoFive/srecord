@@ -37,7 +37,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -o test.out 2> LOG
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -o test.out 2> LOG
 if test $? -ne 0; then
     cat LOG
     fail
@@ -54,7 +54,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> LOG
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> LOG
 if test $? -ne 0; then
     cat LOG
     fail
@@ -82,7 +82,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -97,7 +97,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> /dev/null
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> /dev/null
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -122,7 +122,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -137,7 +137,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> /dev/null
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> /dev/null
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -176,7 +176,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -198,7 +198,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> /dev/null
+ valgrind --leak-check=yes srec_cat test.in -crc16be 0x100 -no-augment -o test.out 2> /dev/null
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

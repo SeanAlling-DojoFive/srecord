@@ -45,10 +45,10 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.ok.uue -o test.ok -bin
+ valgrind --leak-check=yes srec_cat test.ok.uue -o test.ok -bin
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -wilson
+ valgrind --leak-check=yes srec_cat test.in -o test.out -wilson
 if test $? -ne 0; then fail; fi
 
 cmp test.ok test.out
@@ -71,7 +71,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -wilson -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat test.in -wilson -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

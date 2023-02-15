@@ -17,7 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-TEST_SUBJECT="srec_cat -o -coe 32 to test xiretza's patch"
+TEST_SUBJECT=" valgrind --leak-check=yes srec_cat -o -coe 32 to test xiretza's patch"
 . test_prelude.sh
 
 cat > test.in << 'fubar'
@@ -63,7 +63,7 @@ if test $? -ne 0; then no_result; fi
 cat > test.ok << 'fubar'
 ; HDR
 ;
-; Generated automatically by srec_cat -o --coe 32
+; Generated automatically by  valgrind --leak-check=yes srec_cat -o --coe 32
 ;
 ; depth = 256; 0x0100
 ; width = 32; 0x20
@@ -329,7 +329,7 @@ F353A0CA,
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -coe 32
+ valgrind --leak-check=yes srec_cat test.in -o test.out -coe 32
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

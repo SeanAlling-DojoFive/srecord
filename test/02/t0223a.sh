@@ -34,7 +34,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -over test.in -range-pad 4 -stm32-le 0x100 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -over test.in -range-pad 4 -stm32-le 0x100 \
     -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 

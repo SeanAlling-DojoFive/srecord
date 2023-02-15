@@ -40,7 +40,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -spasm
+ valgrind --leak-check=yes srec_cat test.in -o test.out -spasm
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -57,7 +57,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -spasmle
+ valgrind --leak-check=yes srec_cat test.in -o test.out -spasmle
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -71,7 +71,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crop 2 10 -o test.out -spasmle
+ valgrind --leak-check=yes srec_cat test.in -crop 2 10 -o test.out -spasmle
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

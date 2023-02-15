@@ -52,7 +52,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crop -within mask -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crop -within mask -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

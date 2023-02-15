@@ -43,7 +43,7 @@ S70500000000FA
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out --address-length=4 \
+ valgrind --leak-check=yes srec_cat test.in -o test.out --address-length=4 \
     --output-block-size=29 --output-block-packing
 if test $? -ne 0; then fail; fi
 

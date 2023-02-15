@@ -41,7 +41,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -elenbe 0x200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -elenbe 0x200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -59,7 +59,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -elenle 0x200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -elenle 0x200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -77,7 +77,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -emaxbe 0x200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -emaxbe 0x200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -95,7 +95,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -emaxle 0x200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -emaxle 0x200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -113,7 +113,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -eminbe 0x200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -eminbe 0x200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -131,7 +131,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -eminle 0x200 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -eminle 0x200 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

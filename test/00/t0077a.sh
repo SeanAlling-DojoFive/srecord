@@ -47,7 +47,7 @@ fubar
 if test $? -ne 0; then no_result; fi
 
 # This is the actual test
-srec_cat test.in -o test.out -os65v -eol=nl -disable=esa > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -o test.out -os65v -eol=nl -disable=esa > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail
@@ -76,7 +76,7 @@ fubar
 if test $? -ne 0; then no_result; fi
 
 # This is the actual test
-srec_cat test.in -o test.out -os65v -eol=nl > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -o test.out -os65v -eol=nl > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail
@@ -96,7 +96,7 @@ S9031000EC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -os -o test.out -header HDR > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -os -o test.out -header HDR > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

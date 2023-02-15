@@ -49,10 +49,10 @@ Different:      0x40 - 0x43
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in.srec -o test.in -bin
+ valgrind --leak-check=yes srec_cat test.in.srec -o test.in -bin
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -bin -exclude 0x40 0x44 -becrc32 0x40 \
+ valgrind --leak-check=yes srec_cat test.in -bin -exclude 0x40 0x44 -becrc32 0x40 \
     -o test.out -bin > LOG 2>&1
 if test $? -ne 0; then
     cat LOG

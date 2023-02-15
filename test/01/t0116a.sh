@@ -60,7 +60,7 @@ S5030009F3
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -ti-txt -o test.out -header HDR > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -ti-txt -o test.out -header HDR > LOG 2>&1
 if test $? -ne 0; then
     cat LOG
     fail

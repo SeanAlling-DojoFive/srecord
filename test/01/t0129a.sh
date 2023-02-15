@@ -36,7 +36,7 @@ srec_cat: test.out: 2: The Assembler (16-bit) output format uses 16-bit data,
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -asm -output-words > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -o test.out -asm -output-words > LOG 2>&1
 if test $? -ne 1; then
     cat LOG
     fail

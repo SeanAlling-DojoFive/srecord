@@ -20,7 +20,7 @@
 TEST_SUBJECT="-Round_Down"
 . test_prelude.sh
 
-srec_cat -generate 0 8 -constant 0 -offset - 1 -Round_Up 0 \
+ valgrind --leak-check=yes srec_cat -generate 0 8 -constant 0 -offset - 1 -Round_Up 0 \
     2> test.out
 
 if test $? -ne 1; then fail; fi

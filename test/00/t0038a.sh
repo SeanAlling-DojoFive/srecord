@@ -39,7 +39,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -mos-tech
+ valgrind --leak-check=yes srec_cat test.in -o test.out -mos-tech
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -62,7 +62,7 @@ S5030001FB
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -mos-tech -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat test.in -mos-tech -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

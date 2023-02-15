@@ -48,7 +48,7 @@ const unsigned long bogus_length      = 0x0000000E;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -c-array bogus
+ valgrind --leak-check=yes srec_cat test.in -o test.out -c-array bogus
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

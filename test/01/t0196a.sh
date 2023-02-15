@@ -29,11 +29,11 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.middle -MsBin
+ valgrind --leak-check=yes srec_cat test.in -o test.middle -MsBin
 if test $? -ne 0; then fail; fi
 
 # make sure that round-trip data is identical
-srec_cat test.middle -MsBin -o test.out --header HDR
+ valgrind --leak-check=yes srec_cat test.middle -MsBin -o test.out --header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.in test.out

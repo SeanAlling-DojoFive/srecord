@@ -36,7 +36,7 @@ srec_cat: test.out: 1: The Intel-16 output format uses 16-bit data, but
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -inhx16 > LOG 2>&1
+ valgrind --leak-check=yes srec_cat test.in -o test.out -inhx16 > LOG 2>&1
 if test $? -ne 1; then
     cat LOG
     fail

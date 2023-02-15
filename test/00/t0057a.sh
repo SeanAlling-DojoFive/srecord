@@ -74,7 +74,7 @@ const unsigned long eprom_length      = 0x000000F1;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -exclude 13 42 -o test.out -ca
+ valgrind --leak-check=yes srec_cat test.in -exclude 13 42 -o test.out -ca
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

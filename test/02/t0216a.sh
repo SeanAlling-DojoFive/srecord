@@ -27,7 +27,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in.1 -mot -o test.in -ppb
+ valgrind --leak-check=yes srec_cat test.in.1 -mot -o test.in -ppb
 if test $? -ne 0; then no_result; fi
 
 cat > test.ok << 'fubar'
@@ -35,7 +35,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -ppb -o test.out -hexdump
+ valgrind --leak-check=yes srec_cat test.in -ppb -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -52,7 +52,7 @@ fubar
 cat test.preamble test.in > test.in.p
 if test $? -ne 0; then fail; fi
 
-srec_cat test.in.p -ppb -o test.out -hexdump
+ valgrind --leak-check=yes srec_cat test.in.p -ppb -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -474,7 +474,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in.2 -mot -o test.in -ppb
+ valgrind --leak-check=yes srec_cat test.in.2 -mot -o test.in -ppb
 if test $? -ne 0; then no_result; fi
 
 # cSpell:disable
@@ -1299,7 +1299,7 @@ fubar
 # cSpell:enable
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -ppb -o test.out -hexdump
+ valgrind --leak-check=yes srec_cat test.in -ppb -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

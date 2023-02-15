@@ -42,7 +42,7 @@ S5030002FA
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fpc -o test.out -header HDR
+ valgrind --leak-check=yes srec_cat test.in -fpc -o test.out -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -59,7 +59,7 @@ $%%%%%
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fpc -o test.out -fpc
+ valgrind --leak-check=yes srec_cat test.in -fpc -o test.out -fpc
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

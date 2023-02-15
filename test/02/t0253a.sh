@@ -62,7 +62,7 @@ const unsigned long eprom_length      = 0x00000049;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -c-array -section-style \
+ valgrind --leak-check=yes srec_cat test.in -o test.out -c-array -section-style \
     -prefix="__root __no_init" -postfix="@0x20000000"
 if test $? -ne 0; then fail; fi
 
@@ -98,7 +98,7 @@ const unsigned long eprom_length      = 0x0000000E;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -c-array -prefix="__root __no_init"
+ valgrind --leak-check=yes srec_cat test.in -o test.out -c-array -prefix="__root __no_init"
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -133,7 +133,7 @@ const unsigned long eprom_length      = 0x0000000E;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -c-array -postfix="@0x20000000"
+ valgrind --leak-check=yes srec_cat test.in -o test.out -c-array -postfix="@0x20000000"
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

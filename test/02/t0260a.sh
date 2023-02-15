@@ -29,7 +29,7 @@ Data:   00000000 - 00000000
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -generate 0 1 -constant 0 -random-fill 0xFFFFFFFE 0xFFFFFFFF \
+ valgrind --leak-check=yes srec_cat -generate 0 1 -constant 0 -random-fill 0xFFFFFFFE 0xFFFFFFFF \
     -o test.srec -header HDR -start-addr 0
 if test $? -ne 0; then fail; fi
 
@@ -50,7 +50,7 @@ Data:   00000000 - 00000000
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat -generate 0 1 -constant 0 -random-fill 0xFFFFFFFF 0x100000000 \
+ valgrind --leak-check=yes srec_cat -generate 0 1 -constant 0 -random-fill 0xFFFFFFFF 0x100000000 \
     -o test.srec -header HDR -start-addr 0
 if test $? -ne 0; then fail; fi
 

@@ -45,7 +45,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in1 test.in2 -offset -max-addr test.in1 -o test.out
+ valgrind --leak-check=yes srec_cat test.in1 test.in2 -offset -max-addr test.in1 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -60,7 +60,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in1 test.in2 -offset -max-addr test.in1 -ru 16 -o test.out
+ valgrind --leak-check=yes srec_cat test.in1 test.in2 -offset -max-addr test.in1 -ru 16 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

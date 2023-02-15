@@ -35,7 +35,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -bin -exclude 0x08 0x0D 0x2a 0x37 -o test.out -hexdump
+ valgrind --leak-check=yes srec_cat test.in -bin -exclude 0x08 0x0D 0x2a 0x37 -o test.out -hexdump
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

@@ -38,7 +38,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-b-e 0x100 -ccitt -no-augment -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-b-e 0x100 -ccitt -no-augment -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -53,7 +53,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-b-e 0x100 -ccitt -augment -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-b-e 0x100 -ccitt -augment -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -68,7 +68,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-b-e 0x100 -xmodem -no-augment -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-b-e 0x100 -xmodem -no-augment -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -83,7 +83,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-b-e 0x100 -xmodem -augment -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-b-e 0x100 -xmodem -augment -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -98,7 +98,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-b-e 0x100 -broken -augment -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-b-e 0x100 -broken -augment -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -112,7 +112,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-b-e -max-address test.in -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-b-e -max-address test.in -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -126,7 +126,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crc16-l-e -max-address test.in -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crc16-l-e -max-address test.in -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

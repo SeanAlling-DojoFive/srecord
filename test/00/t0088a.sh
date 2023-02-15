@@ -37,7 +37,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -inhx16
+ valgrind --leak-check=yes srec_cat test.in -o test.out -inhx16
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -57,7 +57,7 @@ S111000048656C6C6F2C20576F726C64210A7B
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -inhx16 -o test.out -data-only
+ valgrind --leak-check=yes srec_cat test.in -inhx16 -o test.out -data-only
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

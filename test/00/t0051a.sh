@@ -36,7 +36,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -checksum-neg-be 0x100 4 4 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -checksum-neg-be 0x100 4 4 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -51,7 +51,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -checksum-neg-le 0x100 4 4 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -checksum-neg-le 0x100 4 4 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

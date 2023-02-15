@@ -37,13 +37,13 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.ok.srec -o test.ok -bin
+ valgrind --leak-check=yes srec_cat test.ok.srec -o test.ok -bin
 if test $? -ne 0; then fail; fi
 
 #
 # Read Motorola format and write Stewie format.
 #
-srec_cat test.in -o test.out -stewie
+ valgrind --leak-check=yes srec_cat test.in -o test.out -stewie
 if test $? -ne 0; then fail; fi
 
 cmp test.ok test.out
@@ -52,7 +52,7 @@ if test $? -ne 0; then fail; fi
 #
 # Read Stewie format and write Motorola format.
 #
-srec_cat test.out -stewie -o test.out2 -header HDR
+ valgrind --leak-check=yes srec_cat test.out -stewie -o test.out2 -header HDR
 if test $? -ne 0; then fail; fi
 
 diff test.in test.out2

@@ -30,7 +30,7 @@ fubar
 if test $? -ne 0; then no_result; fi
 
 #create intermediate file, actual hp64k format
-srec_cat test.in1 -moto -out test.in2 -bin
+ valgrind --leak-check=yes srec_cat test.in1 -moto -out test.in2 -bin
 if test $? -ne 0; then no_result; fi
 
 cat > test.ok << 'fubar'

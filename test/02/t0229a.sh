@@ -36,7 +36,7 @@ cat > test.ok << 'fubar'
 #DataRadix=3
 #Data
 #
-# Generated automatically by srec_cat -o --MEM 32
+# Generated automatically by  valgrind --leak-check=yes srec_cat -o --MEM 32
 #
 # HDR
 48656C6C
@@ -47,7 +47,7 @@ cat > test.ok << 'fubar'
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in --fill 0 0 16 -o test.out -mem 32
+ valgrind --leak-check=yes srec_cat test.in --fill 0 0 16 -o test.out -mem 32
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

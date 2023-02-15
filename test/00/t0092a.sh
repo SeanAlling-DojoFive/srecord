@@ -44,10 +44,10 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -offset 0x4321 -header HDR -o test.out -aomf
+ valgrind --leak-check=yes srec_cat test.in -offset 0x4321 -header HDR -o test.out -aomf
 if test $? -ne 0; then fail; fi
 
-srec_cat test.ok.srec -o test.ok -bin
+ valgrind --leak-check=yes srec_cat test.ok.srec -o test.ok -bin
 if test $? -ne 0; then no_result; fi
 
 cmp test.ok test.out

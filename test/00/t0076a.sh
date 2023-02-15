@@ -90,7 +90,7 @@ fubar
 # cSpell:enable
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -fastload
+ valgrind --leak-check=yes srec_cat test.in -o test.out -fastload
 if test $? -ne 0; then fail; fi
 
 srec_cmp test.in test.out -fastload

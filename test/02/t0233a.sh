@@ -24,7 +24,7 @@ TEST_SUBJECT="srec-cat -checksum-be"
 #
 # Test the checksum of all bytes 0x01
 #
-srec_cat -gen 0 0x10 --const 0x01 \
+ valgrind --leak-check=yes srec_cat -gen 0 0x10 --const 0x01 \
     -header=HDR -esa 0 \
     > test.in
 if test $? -ne 0; then no_result; fi
@@ -38,7 +38,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -Checksum_Big_Endian 0x400 > test.out 2> LOG
+ valgrind --leak-check=yes srec_cat test.in -Checksum_Big_Endian 0x400 > test.out 2> LOG
 if test $? -ne 0; then
     cat LOG
     fail
@@ -51,7 +51,7 @@ if test $? -ne 0; then fail; fi
 #
 # Test the checksum of all bytes 0xFF
 #
-srec_cat -gen 0 0x10 --const 0xFF \
+ valgrind --leak-check=yes srec_cat -gen 0 0x10 --const 0xFF \
     -header=HDR -esa 0 \
     > test.in
 if test $? -ne 0; then no_result; fi
@@ -65,7 +65,7 @@ S9030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -Checksum_Pos_Big_Endian 0x400 > test.out
+ valgrind --leak-check=yes srec_cat test.in -Checksum_Pos_Big_Endian 0x400 > test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

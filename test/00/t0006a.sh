@@ -43,7 +43,7 @@ S5030002FA
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crop 50 10000 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crop 50 10000 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -61,7 +61,7 @@ S90300807C
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -offset 128 -crop 50 150 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -offset 128 -crop 50 150 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -78,7 +78,7 @@ S5030001FB
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crop 50 70 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crop 50 70 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -98,7 +98,7 @@ S90300807C
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -offset 128 -crop 50 10000 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -offset 128 -crop 50 10000 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -114,7 +114,7 @@ S5030000FC
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -crop 10000 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -crop 10000 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -124,7 +124,7 @@ if test $? -ne 0; then fail; fi
 #              [===data===]
 # [===crop===]
 #
-srec_cat test.in -offset 256 -crop 0 128 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -offset 256 -crop 0 128 -o test.out
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out

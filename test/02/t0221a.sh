@@ -44,7 +44,7 @@ fubar
 test $? -eq 0 || no_result
 
 # now build the TRS80 formatted file
-srec_cat test.in.in -nh -o test.in -bin
+ valgrind --leak-check=yes srec_cat test.in.in -nh -o test.in -bin
 test $? -eq 0 || no_result
 
 srec_info test.in -trs80 > test.out
@@ -53,7 +53,7 @@ test $? -eq 0 || fail
 diff test.ok.1 test.out
 test $? -eq 0 || fail
 
-srec_cat test.in -trs80 -o test.out
+ valgrind --leak-check=yes srec_cat test.in -trs80 -o test.out
 test $? -eq 0 || fail
 
 diff test.ok.2 test.out

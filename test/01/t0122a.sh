@@ -63,7 +63,7 @@ const unsigned long eprom_length      = 0x00000049;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -o test.out -c-array -section-style
+ valgrind --leak-check=yes srec_cat test.in -o test.out -c-array -section-style
 if test $? -ne 0; then fail; fi
 
 diff test.ok test.out
@@ -106,7 +106,7 @@ const unsigned long eprom_length      = 0x0000004A;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
     -o test.out -c-array -section-style -ow
 if test $? -ne 0; then fail; fi
 
@@ -149,7 +149,7 @@ const unsigned long eprom_length      = 74;
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
     -o test.out -c-array -section-style -ow -dec-style
 if test $? -ne 0; then fail; fi
 
@@ -211,7 +211,7 @@ extern const unsigned long eprom_length_of_sections[];
 fubar
 if test $? -ne 0; then no_result; fi
 
-srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
+ valgrind --leak-check=yes srec_cat test.in -fill 0xFF -within test.in -range-padding=2 \
     -o test.out -c-array -section-style -ow -include
 if test $? -ne 0; then fail; fi
 
